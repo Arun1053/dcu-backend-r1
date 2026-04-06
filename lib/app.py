@@ -39,6 +39,14 @@ import pandas as pd
 import numpy as np
 import joblib
 import random
+
+from pathlib import Path
+
+
+BASE_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = BASE_DIR.parent
+CSV_PATH = PROJECT_ROOT / "output" / "output.csv"
+
  
 app = FastAPI()
  
@@ -59,7 +67,7 @@ def run_model():
     try:
         # module_hgi()  # keep commented for now
  
-        df = pd.read_csv(r"output\output.csv")
+        df = pd.read_csv(CSV_PATH)
         df = df.fillna("")
  
         # 👉 Convert time column
